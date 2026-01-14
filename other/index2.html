@@ -25,7 +25,6 @@
       background: #fff;
       color: #1a1a2e;
       line-height: 1.6;
-      overflow-x: hidden;
     }
     
     /* Page sections - FULL WIDTH */
@@ -248,7 +247,7 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════════════════
-       INTERACTIVE TAXONOMY TREE STYLES (NO SIDEBAR)
+       INTERACTIVE TAXONOMY TREE STYLES
        ═══════════════════════════════════════════════════════════════════════════ */
     .tree-app-container {
       background: white;
@@ -266,8 +265,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
     }
     
     .tree-title {
@@ -311,9 +308,91 @@
       background: #236a7a;
     }
     
-    .tree-area {
-      width: 100%;
+    .tree-main-content {
+      display: flex;
       height: 550px;
+    }
+    
+    .tree-sidebar {
+      width: 280px;
+      background: white;
+      border-right: 1px solid #e5e5e5;
+      padding: 16px;
+      overflow-y: auto;
+    }
+    
+    .tree-legend {
+      margin-bottom: 20px;
+    }
+    
+    .tree-legend h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+    
+    .tree-legend-group {
+      margin-bottom: 14px;
+    }
+    
+    .tree-legend-group h5 {
+      font-size: 11px;
+      font-weight: 500;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    
+    .tree-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+      font-size: 12px;
+      color: #52525b;
+    }
+    
+    .tree-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    
+    .tree-stats {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    
+    .tree-stats h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+    
+    .tree-stat-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+    
+    .tree-stat-label {
+      color: #6b7280;
+    }
+    
+    .tree-stat-value {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    
+    .tree-area {
+      flex: 1;
       position: relative;
       background: white;
     }
@@ -367,19 +446,17 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════════════════
-       CHARTS STYLES - RESPONSIVE (STACK BY DEFAULT)
+       CHARTS STYLES
        ═══════════════════════════════════════════════════════════════════════════ */
     .charts-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
       margin: 2rem 0;
     }
     
-    @media screen and (min-width: 1250px) {
-      .charts-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    @media screen and (max-width: 1000px) {
+      .charts-grid { grid-template-columns: 1fr; }
     }
     
     .chart-card {
@@ -388,8 +465,6 @@
       border-radius: 16px;
       padding: 1.5rem;
       box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-      width: 100%;
-      overflow: hidden;
     }
     
     .chart-card h4 {
@@ -432,47 +507,6 @@
     .chart-canvas-container {
       height: 380px;
       position: relative;
-      width: 100%;
-    }
-    
-    /* Pie charts - SAME RESPONSIVE APPROACH AS BAR CHARTS */
-    .pie-charts-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-    
-    @media screen and (min-width: 1250px) {
-      .pie-charts-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    
-    .pie-chart-card {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-      width: 100%;
-      overflow: hidden;
-    }
-    
-    .pie-chart-card h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1a1a2e;
-      margin-bottom: 1rem;
-      text-align: center;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid #2a6b7c;
-    }
-    
-    .pie-canvas-container {
-      height: 320px;
-      position: relative;
-      width: 100%;
     }
 
     /* ═══════════════════════════════════════════════════════════════════════════
@@ -730,7 +764,9 @@
       .action-buttons { flex-direction: column; align-items: center; }
       .action-btn { width: 100%; max-width: 320px; justify-content: center; }
       .page-section { padding: 2.5rem 4%; }
-      .tree-area { height: 450px; }
+      .tree-main-content { flex-direction: column; height: auto; }
+      .tree-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e5e5e5; }
+      .tree-area { height: 400px; }
     }
     
     /* Text utilities */
@@ -765,6 +801,7 @@
       <div class="publication-authors">
         <span class="author-block"><a href="https://www.linkedin.com/in/francesco-giarrusso-735759161/">Francesco Giarrusso</a><sup>†</sup>,</span>
         <span class="author-block"><a href="https://www.linkedin.com/in/olgasorokoletova/">Olga E. Sorokoletova</a><sup>†</sup>,</span>
+
         <span class="author-block"><a href="https://www.diag.uniroma1.it/users/vincenzo_suriani">Vincenzo Suriani</a><sup>†</sup>,</span>
         <span class="author-block"><a href="https://www.diag.uniroma1.it/nardi/">Daniele Nardi</a><sup>†</sup></span>
       </div>
@@ -774,11 +811,11 @@
 
       <!-- Action Buttons -->
       <div class="action-buttons">
-        <a href="https://guardingtheguardrails.com/guarding-visualizer" class="action-btn conversations" target="_blank">
+        <a href="https://guardingtheguardrails.com/visualizer" class="action-btn conversations" target="_blank">
           <i class="fas fa-comments"></i>
           <span>Visualize Conversations</span>
         </a>
-        <a href="https://guardingtheguardrails.com/guarding-analytics" class="action-btn statistics" target="_blank">
+        <a href="https://guardingtheguardrails.com/analytics" class="action-btn statistics" target="_blank">
           <i class="fas fa-chart-bar"></i>
           <span>Visualize Full Statistics</span>
         </a>
@@ -857,7 +894,7 @@
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════════════════════
-       TAXONOMY SECTION WITH INTERACTIVE D3 TREE (NO SIDEBAR)
+       TAXONOMY SECTION WITH INTERACTIVE D3 TREE
        ═══════════════════════════════════════════════════════════════════════════ -->
   <div class="page-section" id="taxonomy">
     <div class="inner-wide">
@@ -866,7 +903,9 @@
         We present a comprehensive taxonomy of 50 prompt-based jailbreaking techniques targeting Large Language Models. This taxonomy consolidates and extends prior classifications from the literature, organized into <strong>seven distinct families</strong> (plus one optional category for Automatic Attacks) based on the primary mechanism through which adversarial prompts bypass safety safeguards.
       </p>
 
-      <!-- FIGURE 1: INTERACTIVE D3.js TAXONOMY TREE (NO SIDEBAR) -->
+      <!-- ═══════════════════════════════════════════════════════════════════════
+           FIGURE 1: INTERACTIVE D3.js TAXONOMY TREE
+           ═══════════════════════════════════════════════════════════════════════ -->
       <div class="tree-app-container">
         <div class="tree-header">
           <div class="tree-title"><i class="fas fa-sitemap"></i> Figure 1: Interactive Jailbreak Taxonomy</div>
@@ -877,13 +916,75 @@
           </div>
         </div>
         
-        <div class="tree-area">
-          <svg class="tree-svg" id="tree-svg"></svg>
-          <div class="tree-tooltip" id="tree-tooltip"></div>
+        <div class="tree-main-content">
+          <div class="tree-sidebar">
+            <div class="tree-legend">
+              <h4>Legend</h4>
+              
+              <div class="tree-legend-group">
+                <h5>Node Types</h5>
+                <div class="tree-legend-item">
+                  <div class="tree-legend-dot" style="background: #1a1a1a;"></div>
+                  <span>Root</span>
+                </div>
+                <div class="tree-legend-item">
+                  <div class="tree-legend-dot" style="background: #822433;"></div>
+                  <span>Categories (7+1)</span>
+                </div>
+                <div class="tree-legend-item">
+                  <div class="tree-legend-dot" style="background: #2a6b7c;"></div>
+                  <span>Subcategories</span>
+                </div>
+                <div class="tree-legend-item">
+                  <div class="tree-legend-dot" style="background: #10b981;"></div>
+                  <span>Techniques</span>
+                </div>
+                <div class="tree-legend-item">
+                  <div class="tree-legend-dot" style="background: #f59e0b;"></div>
+                  <span>Sub-techniques</span>
+                </div>
+              </div>
+              
+              <div class="tree-legend-group">
+                <h5>Special Markings</h5>
+                <div class="tree-legend-item">
+                  <div class="tree-legend-dot" style="background: #a855f7;"></div>
+                  <span>Optional Category</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tree-stats">
+              <h4>Taxonomy Statistics</h4>
+              <div class="tree-stat-row">
+                <span class="tree-stat-label">Categories</span>
+                <span class="tree-stat-value">8</span>
+              </div>
+              <div class="tree-stat-row">
+                <span class="tree-stat-label">Subcategories</span>
+                <span class="tree-stat-value" id="subcat-count">26</span>
+              </div>
+              <div class="tree-stat-row">
+                <span class="tree-stat-label">Techniques</span>
+                <span class="tree-stat-value" id="tech-count">16</span>
+              </div>
+              <div class="tree-stat-row">
+                <span class="tree-stat-label">Total Nodes</span>
+                <span class="tree-stat-value">50+</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tree-area">
+            <svg class="tree-svg" id="tree-svg"></svg>
+            <div class="tree-tooltip" id="tree-tooltip"></div>
+          </div>
         </div>
       </div>
 
-      <!-- TECHNIQUES TABLE WITH EXAMPLES -->
+      <!-- ═══════════════════════════════════════════════════════════════════════
+           TECHNIQUES TABLE WITH EXAMPLES FROM LATEX
+           ═══════════════════════════════════════════════════════════════════════ -->
       <h3 class="title is-4 mt-2">Technique Examples from the Challenge</h3>
       <p style="color: #6b7280; margin-bottom: 1rem;">
         The following table provides examples of jailbreaking techniques collected during our red-teaming challenge. Examples marked with <span class="challenge-marker">C</span> are actual instances from the challenge dataset.
@@ -1092,7 +1193,7 @@
         We analyze attack performance across two configurations: <strong>All Tasks</strong> (complete dataset covering all 9 challenge tasks) and <strong>Selected Adversarial Tasks</strong>. The selected tasks include physical harm promotion, non-physical harm promotion, secret word disclosure, and system prompt extraction—these represent <em>typical adversarial evaluation scenarios</em> used in red-teaming benchmarks, where the attacker has clear malicious intent and the model's safety mechanisms are directly challenged.
       </p>
 
-      <!-- BAR CHARTS GRID (RESPONSIVE - STACKS ON SMALLER SCREENS) -->
+      <!-- CHARTS GRID -->
       <div class="charts-grid">
         <!-- All Tasks Chart -->
         <div class="chart-card">
@@ -1141,27 +1242,6 @@
 
       <div class="info-box warning">
         <p><strong>Selected Adversarial Tasks:</strong> Physical harm promotion, non-physical harm promotion, secret word disclosure, and system prompt extraction represent <em>typical red-teaming evaluation scenarios</em>. These tasks involve direct attempts to bypass safety mechanisms with clear malicious objectives. The higher overall success rate on selected tasks (19.5% vs 13.9%) reflects the concentrated adversarial nature of these specific attack vectors.</p>
-      </div>
-
-      <!-- PIE CHARTS FOR DISTRIBUTIONS -->
-      <h3 class="title is-4 mt-2">Distribution Analysis (All Tasks)</h3>
-      
-      <div class="pie-charts-grid">
-        <!-- Distribution of Total Conversations -->
-        <div class="pie-chart-card">
-          <h4>Distribution of Total Conversations</h4>
-          <div class="pie-canvas-container">
-            <canvas id="totalConvPieChart"></canvas>
-          </div>
-        </div>
-
-        <!-- Distribution of Successful Attacks -->
-        <div class="pie-chart-card">
-          <h4>Distribution of Successful Attacks</h4>
-          <div class="pie-canvas-container">
-            <canvas id="successfulPieChart"></canvas>
-          </div>
-        </div>
       </div>
 
       <h3 class="title is-4 mt-2">Comparative Success Rates</h3>
@@ -1366,7 +1446,7 @@
       </div>
 
       <div style="text-align: center; margin-top: 2.5rem;">
-        <a href="https://guardingtheguardrails.com/guarding-analytics" class="action-btn statistics" target="_blank">
+        <a href="https://guardingtheguardrails.com/analytics" class="action-btn statistics">
           <i class="fas fa-chart-bar"></i>
           <span>Explore Full Statistics</span>
         </a>
@@ -1390,11 +1470,11 @@
        ═══════════════════════════════════════════════════════════════════════════ -->
   <script>
     // ═══════════════════════════════════════════════════════════════════════════
-    // D3.js INTERACTIVE TAXONOMY TREE (NO SIDEBAR)
+    // D3.js INTERACTIVE TAXONOMY TREE
     // ═══════════════════════════════════════════════════════════════════════════
     
     const taxonomyData = {
-      name: "",
+      name: "LLM Attack Taxonomy",
       type: "root",
       id: "root",
       children: [
@@ -1530,6 +1610,7 @@
           name: "8. Automatic Attacks",
           type: "category",
           id: "automatic_attacks",
+          special: "optional",
           children: [
             { name: "8.1 Feedback Optimization Attacks", type: "subcategory", id: "feedback_optimization" },
             { name: "8.2 Genetic Algorithms", type: "subcategory", id: "genetic_algorithms" },
@@ -1539,11 +1620,11 @@
       ]
     };
 
-    let svg, g, tree, root, zoomBehavior;
-    let initialTransform; // Store initial transform for reset
+    let svg, g, tree, root;
     const tooltip = d3.select("#tree-tooltip");
 
-    function getNodeColor(type) {
+    function getNodeColor(type, special) {
+      if (special === "optional") return "#a855f7";
       switch(type) {
         case 'root': return '#1a1a1a';
         case 'category': return '#822433';
@@ -1565,7 +1646,7 @@
 
     function initializeTree() {
       const container = document.querySelector('.tree-area');
-      const margin = { top: 30, right: 180, bottom: 30, left: 100 };
+      const margin = { top: 30, right: 150, bottom: 30, left: 80 };
       const width = container.clientWidth - margin.left - margin.right;
       const height = container.clientHeight - margin.top - margin.bottom;
 
@@ -1575,10 +1656,8 @@
 
       svg.selectAll("*").remove();
 
-      g = svg.append("g");
-      
-      // Store the initial transform for reset functionality
-      initialTransform = d3.zoomIdentity.translate(margin.left, margin.top);
+      g = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
       tree = d3.tree()
         .size([height, width * 0.85])
@@ -1595,17 +1674,13 @@
 
       updateTree();
 
-      // Create zoom behavior and store it globally
-      zoomBehavior = d3.zoom()
+      const zoom = d3.zoom()
         .scaleExtent([0.3, 2.5])
         .on("zoom", (event) => {
           g.attr("transform", event.transform);
         });
 
-      svg.call(zoomBehavior);
-      
-      // Apply initial transform
-      svg.call(zoomBehavior.transform, initialTransform);
+      svg.call(zoom);
     }
 
     function updateTree() {
@@ -1648,8 +1723,8 @@
 
       allNodes.select("circle")
         .attr("r", d => getNodeRadius(d.data.type))
-        .attr("fill", d => getNodeColor(d.data.type))
-        .attr("stroke", d => getNodeColor(d.data.type));
+        .attr("fill", d => getNodeColor(d.data.type, d.data.special))
+        .attr("stroke", d => getNodeColor(d.data.type, d.data.special));
 
       allNodes.select("text")
         .attr("dy", ".35em")
@@ -1672,7 +1747,7 @@
         .style("opacity", 1)
         .style("left", (event.offsetX + 15) + "px")
         .style("top", (event.offsetY - 10) + "px")
-        .html(`<strong>${d.data.name}</strong><br/>Type: ${d.data.type}`);
+        .html(`<strong>${d.data.name}</strong><br/>Type: ${d.data.type}${d.data.special ? '<br/><em>(' + d.data.special + ')</em>' : ''}`);
     }
 
     function hideTooltip() {
@@ -1720,14 +1795,14 @@
     }
 
     function resetView() {
-      // Reset zoom and pan to initial state with smooth transition
-      svg.transition()
-        .duration(500)
-        .call(zoomBehavior.transform, initialTransform);
+      svg.transition().duration(500).call(
+        d3.zoom().transform,
+        d3.zoomIdentity.translate(80, 30).scale(1)
+      );
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // CHART.JS BAR CHARTS & PIE CHARTS
+    // CHART.JS BAR CHARTS
     // ═══════════════════════════════════════════════════════════════════════════
 
     const burgundy = '#822433';
@@ -1756,18 +1831,6 @@
       { category: "No Technique", total: 54, successful: 1, rate: 1.9 },
       { category: "Persuasion", total: 40, successful: 5, rate: 12.5 },
       { category: "Automatic Attacks", total: 37, successful: 10, rate: 27.0 }
-    ];
-
-    // Pie chart colors
-    const pieColors = [
-      '#3B82F6', // Blue
-      '#EF4444', // Red  
-      '#10B981', // Green
-      '#F59E0B', // Orange
-      '#8B5CF6', // Purple
-      '#06B6D4', // Cyan
-      '#EC4899', // Pink
-      '#14B8A6'  // Teal
     ];
 
     function createPerformanceChart(canvasId, data) {
@@ -1845,87 +1908,19 @@
       });
     }
 
-    function createPieChart(canvasId, data, dataKey) {
-      const ctx = document.getElementById(canvasId).getContext('2d');
-      // Exclude "No Technique" from pie charts
-      const filteredData = data.filter(d => d.category !== "No Technique");
-      const total = filteredData.reduce((sum, d) => sum + d[dataKey], 0);
-      
-      new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: filteredData.map(d => d.category),
-          datasets: [{
-            data: filteredData.map(d => d[dataKey]),
-            backgroundColor: pieColors.slice(0, filteredData.length),
-            borderColor: '#ffffff',
-            borderWidth: 3,
-            hoverOffset: 15
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          cutout: '45%',
-          plugins: {
-            legend: {
-              position: 'bottom',
-              labels: {
-                padding: 12,
-                font: { size: 11 },
-                usePointStyle: true,
-                generateLabels: function(chart) {
-                  const data = chart.data;
-                  return data.labels.map((label, i) => {
-                    const value = data.datasets[0].data[i];
-                    const percentage = ((value / total) * 100).toFixed(1);
-                    return {
-                      text: `${label}: ${percentage}%`,
-                      fillStyle: data.datasets[0].backgroundColor[i],
-                      hidden: false,
-                      index: i
-                    };
-                  });
-                }
-              }
-            },
-            tooltip: {
-              backgroundColor: 'rgba(26, 26, 46, 0.95)',
-              padding: 12,
-              callbacks: {
-                label: function(context) {
-                  const value = context.raw;
-                  const percentage = ((value / total) * 100).toFixed(1);
-                  return `${value} (${percentage}%)`;
-                }
-              }
-            }
-          }
-        }
-      });
-    }
-
     // Initialize everything on DOM load
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize D3 Tree
       initializeTree();
       
-      // Initialize Bar Charts
+      // Initialize Charts
       createPerformanceChart('allTasksChart', allTasksData);
       createPerformanceChart('selectedTasksChart', selectedTasksData);
-      
-      // Initialize Pie Charts
-      createPieChart('totalConvPieChart', allTasksData, 'total');
-      createPieChart('successfulPieChart', allTasksData, 'successful');
     });
 
-    // Handle window resize with debounce
-    let resizeTimeout;
+    // Handle window resize
     window.addEventListener('resize', function() {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(function() {
-        initializeTree();
-      }, 250);
+      initializeTree();
     });
   </script>
 
